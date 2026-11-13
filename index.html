@@ -277,7 +277,7 @@ h1 {
     return new THREE.MeshStandardMaterial(o);
   }
   var M = {
-    shell: std(0x141517, 0.5, 0.05),
+    shell: std(0x1f7a3f, 0.5, 0.05),
     gloss: std(0x0c0d0e, 0.18, 0.1),
     rubber: std(0x101112, 0.85, 0),
     steel: std(0xb9bdc4, 0.28, 1),
@@ -289,7 +289,7 @@ h1 {
     led: std(0xdfe4ea, 0.3, 0, { transparent: true, opacity: 0.75, emissive: 0x9fb0c4, emissiveIntensity: 0.35 }),
     kapton: std(0xc98a1c, 0.35, 0.2, { transparent: true, opacity: 0.9 }),
     cover: new THREE.MeshPhysicalMaterial({
-      color: 0x0e1012, envMapIntensity: 0.55, roughness: 0.06, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.05,
+      color: 0x0c3a1e, envMapIntensity: 0.55, roughness: 0.06, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.05,
       transparent: true, opacity: 0.58, depthWrite: false
     })
   };
@@ -354,10 +354,10 @@ h1 {
     for (i = 0; i < 5; i++) g.add(box(0.5, 0.06, i % 2 ? 7 : 9, M.gold, BX + 9.2 + i * 0.8, top + 0.03, -1 + (i % 2)));   // antenna
     g.add(box(4.2, 0.06, 0.5, M.gold, BX + 10.8, top + 0.03, 4));
     // USB-C receptacle and the record switch hang below the board, facing the +Z wall
-    var usb = mesh(slab(8.6, 7.2, 3, 1.4, 0), M.steel, 6, -0.7, 10.9); g.add(usb);
-    g.add(box(6.6, 0.7, 0.3, M.chip, 6, -0.7, 14.4));
-    g.add(box(4, 2.6, 2.4, M.steel, 15, -0.5, 11.6));
-    g.add(cyl(1, 1.2, M.chip, 'z', 15, -1.2, 13.2));
+    var usb = mesh(slab(8.6, 7.2, 3, 1.4, 0), M.steel, 4.5, -0.7, 10.9); g.add(usb);
+    g.add(box(6.6, 0.7, 0.3, M.chip, 4.5, -0.7, 14.4));
+    g.add(box(4, 2.6, 2.4, M.steel, 14.6, -0.5, 11.6));
+    g.add(cyl(1, 1.2, M.chip, 'z', 14.6, -1.2, 13.2));
     g.add(box(1.4, 1, 1.4, M.white, -5, 0.6, 12));                         // status LED
   })(pBoard.group);
 
@@ -411,11 +411,11 @@ h1 {
   })(pCap.group);
 
   // 6. Record button
-  var pBtn = part('Record button', 'Soft-touch cap inside an orange ring, pressing a switch on the board.', [0, -10, 13], 0.15, [15, -2.2, 16.6]);
+  var pBtn = part('Record button', 'Soft-touch cap inside an orange ring, pressing a switch on the board.', [0, -10, 13], 0.15, [14.6, -2.2, 16.8]);
   (function (g) {
-    g.add(cyl(3.4, 0.9, M.orange, 'z', 15, -2.2, 15.2));
-    g.add(cyl(2.6, 1.7, M.gloss, 'z', 15, -2.2, 15.5));
-    g.add(cyl(1.2, 2.2, M.rubber, 'z', 15, -2.2, 13.8));
+    g.add(cyl(4.3, 0.9, M.orange, 'z', 14.6, -2.2, 15.2));
+    g.add(cyl(3.4, 1.9, M.gloss, 'z', 14.6, -2.2, 15.5));
+    g.add(cyl(1.2, 2.2, M.rubber, 'z', 14.6, -2.2, 13.8));
   })(pBtn.group);
 
   // 7. Status light pipe
@@ -435,9 +435,9 @@ h1 {
     g.add(mesh(wall, M.shell, BX, -2.5, 0));
     // USB-C opening on the +Z wall
     var port = new THREE.ExtrudeGeometry(rr(9.4, 3.6, 1.8), { depth: 0.2, bevelEnabled: false, curveSegments: 10 });
-    g.add(mesh(port, M.gloss, 6, -2.2, 14.86));
+    g.add(mesh(port, M.gloss, 4.5, -2.2, 14.86));
     var slot = new THREE.ExtrudeGeometry(rr(7.6, 1.9, 0.95), { depth: 0.1, bevelEnabled: false, curveSegments: 10 });
-    g.add(mesh(slot, std(0x000000, 0.9), 6, -2.2, 15.02));
+    g.add(mesh(slot, std(0x000000, 0.9), 4.5, -2.2, 15.02));
     [[-5, -11], [-5, 11], [20, -11], [20, 11]].forEach(function (p) {
       var boss = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.5, 5, 20), M.shell);
       boss.position.set(p[0], -2.6, p[1]); g.add(boss);
